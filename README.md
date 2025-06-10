@@ -66,6 +66,7 @@ You can now view my-react-app in the browser.
   On Your Network:  http://10.88.0.4:3000
 ```
 <img src="https://github.com/JoelIzDa/Google-Cloud-Project/-/raw/main/img/NewProject.png" alt="New-Project">
+![Alt text](img/NewProject.png)
 
 Um meine Anwendung für die Bereitstellung auf einem Live-Server vorzubereiten, führe ich folgenden Befehl aus:
 
