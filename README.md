@@ -678,10 +678,10 @@ Für den Transfer der Medien habe ich 3 img heruntergeladen und diese von meinem
 
 Die Medien können erfolgreich auf den MedienServer geladen werden. Der Service ermöglicht es, Medieninhalte effizient zu verwalten und von überall darauf zuzugreifen, was ihn zu einer idealen Lösung für moderne Medienverwaltung und -bereitstellung macht.
 
-**SSH Public Key**
+**SSH Public Key** (Abgeändert)
 
 ```bash
-SSH Public Key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCtsQ4IzsIfa87cJtE+oemYh2TatFWw2VhoPCW2qREx8eRbw5L3J1JGHPrTwAVspzG+Z55y4sZAkc6gB0KP2xAsk8X6HA0AEgRHhpVNafUX5VqeP97d67lZsyVPsTVcJbgc4Rt/yUOq3vjaOv2KTVpa+hkyPgJX6Spquy7iqopHgctY8oLE5VBY/kpPFrq3zSFrCbWNiVWNndmfHC2DJS4vD/Mvp7URztpK9O238GsYsCZT4nXNbbPaKGDt+zPTMA79P4ePC1wKAmeWlJup2HwJiAAGdCiOgV9UqHkbWD4DLr/1hBvrSWcAxtHVMQjoKuUhcr1AAei943pkwTDlQW0yh27wQh9VWdpm57HHVkICmP4+cSw9jYAhVFf8cWtLrNQAN42YvOH3MppSbg7vcUPiSEghoiy1xYzq2TsaoQL1wPuwuyF6EhavHvirlh3PpKFbvQJGvrV7f9xEwyjejKKz9tTZyRKOgQ0f0Oj1yoejV/eX1yn8J/0OLbbKCR7aIQc= marentonizda
+SSH Public Key: ssh-rsa AAAAB3Nxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 ```
 
 ------------------------
