@@ -65,7 +65,6 @@ You can now view my-react-app in the browser.
   Local:            http://localhost:3000
   On Your Network:  http://10.88.0.4:3000
 ```
-<img src="https://github.com/JoelIzDa/Google-Cloud-Project/-/raw/main/img/NewProject.png" alt="New-Project">
 
 ![Alt text of the image](https://github.com/JoelIzDa/Google-Cloud-Project/blob/main/img/NewProject.png)
 
@@ -87,7 +86,7 @@ You may serve it with a static server:
 
 Ergebnis im Browser:
 
-<img src="https://github.com/JoelIzDa/Google-Cloud-Project/-/raw/main/img/ReactAppBrowser.png" alt="Test" width="400">
+![Alt text of the image](https://github.com/JoelIzDa/Google-Cloud-Project/blob/main/img/ReactAppBrowser.png)
 
 
 ## Docker Container Deploy
@@ -129,7 +128,7 @@ gcloud container clusters get-credentials m300-project-cluster --zone europe-wes
 ```
 
 Ergebnis:
-<img src="https://github.com/JoelIzDa/Google-Cloud-Project/-/raw/main/img/cluster1.png" alt="Test">
+![Alt text of the image](https://github.com/JoelIzDa/Google-Cloud-Project/blob/main/img/cluster1.png)
 
 
 Die Datei kann mit folgendem Befehl editiert werden.
@@ -305,7 +304,7 @@ kubectl get services
 
 Ergebnis bei mir in der Cloud Console:
 
-<img src="https://github.com/JoelIzDa/Google-Cloud-Project/-/raw/main/img/kubectl-apply.png" alt="Test">
+![Alt text of the image](https://github.com/JoelIzDa/Google-Cloud-Project/blob/main/img/kubectl-apply.png)
 
 ## Schritt 7 - Funktionen testen
 In diesem Schritt geht es darum, dass ich die Anwendung teste.
@@ -314,12 +313,12 @@ Ich schaue nach mit welcher External-IP meine Anwendung läuft.
 kubectl get services
 ```
 
-<img src="https://github.com/JoelIzDa/Google-Cloud-Project/-/raw/main/img/serviceipaddress.png" alt="Test">
+![Alt text of the image](https://github.com/JoelIzDa/Google-Cloud-Project/blob/main/img/serviceipaddress.png)
 
 Die External-IP in diesem Fall ist 34.78.211.40. Diese IP-Adresse wird verwendet, um die App im Browser zu öffnen.
 Ich kann die Adresse "http://35.233.49.4" nun im Browser eingeben und kommen auf die App.
 
-<img src="https://github.com/JoelIzDa/Google-Cloud-Project/-/raw/main/img/browserapp1.png" alt="Test">
+![Alt text of the image](https://github.com/JoelIzDa/Google-Cloud-Project/blob/main/img/browserapp1.png)
 
 Nun werde ich testen, ob die Anwendung auch wirklich nicht mehr erreichbar ist, wenn ich die replicas auf 0 setze.
 Das Deployment kann mit folgendem Befehl skaliert werden:
@@ -329,14 +328,14 @@ kubectl scale deployment react-app --replicas=0
 
 Der Service sollte zwar weiterhin existieren, aber keine laufenden Pods haben, um den Datenverkehr zu bedienen. Im Screenshot sieht man, dass die React-Anwendung gestoppt wurde.
 
-<img src="https://github.com/JoelIzDa/Google-Cloud-Project/-/raw/main/img/browserapp2.png" alt="Test">
+![Alt text of the image](https://github.com/JoelIzDa/Google-Cloud-Project/blob/main/img/browserapp2.png)
 
 Umgekehrt funktioniert dies natürlich auch.
 ```bash
 
 kubectl scale deployment react-app --replicas=4
 ```
-<img src="https://github.com/JoelIzDa/Google-Cloud-Project/-/raw/main/img/browserapp3.png" alt="Test">
+![Alt text of the image](https://github.com/JoelIzDa/Google-Cloud-Project/blob/main/img/browserapp3.png)
 
 -------------------
 
@@ -383,7 +382,7 @@ Nun Sieht man, dass alle Pods heruntergefahren wurden:
 ```bash
 kubectl get pods
 ```
-<img src="https://github.com/JoelIzDa/Google-Cloud-Project/-/raw/main/img/Replicas.png" alt="Test">
+![Alt text of the image](https://github.com/JoelIzDa/Google-Cloud-Project/blob/main/img/Replicas.png)
 
 ---
 
@@ -493,8 +492,7 @@ Die Services und Pods prüfe ich dann:
 kubectl get pods
 kubectl get services
 ```
-
-<img src="https://github.com/JoelIzDa/Google-Cloud-Project/-/raw/main/img/database-1.png" alt="Test">
+![Alt text of the image](https://github.com/JoelIzDa/Google-Cloud-Project/blob/main/img/database-1.png)
 
 Danach starte ich einen temporären MySQL-ClientPod und verbinde mich mit der Datenbank.
 
@@ -510,153 +508,153 @@ kubectl exec -it <mysql-client-pod-name> -- mysql -u root -p
 # MediaServer konfigurieren
 Ich habe meinen persönlichen Mediaserver aufgesetzt, welcher auf der Google Cloud läuft. Dieser ist nützlich, um img und Videos in der Cloud zu speichern. Das spezielle daran ist, dass die img privat gespeichert werden und nicht für jeden zugänglich sind. Dazu habe ich für meine Orientierung einen Netzplan erstellt. Der Mediaserver wird in einer virtuellen Maschine betrieben, welche in der Google Cloud aufgesetzt wurde. Der Zugriff funktioniert über eine ssh-Verbindung. **Es ist jedoch wichtig zu beachten, dass der Mediaserver nicht in einem Docker Container umgesetzt wurde. Dies war zuerst so geplant, doch es stellte sich heraus, dass es nicht viel Sinn machen würde.**
 
-<img src="https://github.com/JoelIzDa/Google-Cloud-Project/-/raw/main/img/Netzwerkplan-emby.png" alt="Test">
+![Alt text of the image](https://github.com/JoelIzDa/Google-Cloud-Project/blob/main/img/Netzwerkplan-emby.png)
 
 **Projektname: mediasrvm300**
-Root-User Passwort: WelcomeOIZ24
+Root-User Passwort: xxx
 
 **Schritt 1:** Als erstes erstelle ich eine neue VM-Instance in der Google Cloud.
 - **Name:** emby
 - **Region:** europe-west1
 - **Zone:** europe-west1-b
-<img src="https://github.com/JoelIzDa/Google-Cloud-Project/-/raw/main/img/web1.png" alt="Test">
+![Alt text of the image](https://github.com/JoelIzDa/Google-Cloud-Project/blob/main/img/web1.png)
 
 Machine Type: e2-standard-2 (2 vCPU, 1 core, 8GB memory)
 
-<img src="https://github.com/JoelIzDa/Google-Cloud-Project/-/raw/main/img/web2.png" alt="Test">
+![Alt text of the image](https://github.com/JoelIzDa/Google-Cloud-Project/blob/main/img/web2.png)
 
 **Schritt 3:** Die Boot-Disk musste ich mit Ubuntu konfigurieren, da der Service mit Linux arbeitet. Anschliessend musste ich noch HTTP und HTTPS akzeptieren.
 
-<img src="https://github.com/JoelIzDa/Google-Cloud-Project/-/raw/main/img/web3.png" alt="Test">
+![Alt text of the image](https://github.com/JoelIzDa/Google-Cloud-Project/blob/main/img/web3.png)
 
 Nun sehe ich, dass die Virtuelle Maschine erstellt wurde.
 
-<img src="https://github.com/JoelIzDa/Google-Cloud-Project/-/raw/main/img/web4.png" alt="Test">
+![Alt text of the image](https://github.com/JoelIzDa/Google-Cloud-Project/blob/main/img/web4.png)
 
 **Schritt 4:** Zunächst erstelle ich eine Verbindung mit der SSH-Cloud-Shell.
 
-<img src="https://github.com/JoelIzDa/Google-Cloud-Project/-/raw/main/img/web5.png" alt="Test">
+![Alt text of the image](https://github.com/JoelIzDa/Google-Cloud-Project/blob/main/img/web5.png)
 
 Ich aktualisiere Ubuntu.
 ```bash
 sudo apt-get update
 ```
 
-<img src="https://github.com/JoelIzDa/Google-Cloud-Project/-/raw/main/img/web6.png" alt="Test">
+![Alt text of the image](https://github.com/JoelIzDa/Google-Cloud-Project/blob/main/img/web6.png)
 
 ```bash
 sudo apt-get upgrade
 ```
 
-<img src="https://github.com/JoelIzDa/Google-Cloud-Project/-/raw/main/img/web7.png" alt="Test">
+![Alt text of the image](https://github.com/JoelIzDa/Google-Cloud-Project/blob/main/img/web7.png)
 
 Nach der aktualisierung von Ubuntu lade ich die Ubuntu-Anwendung herunter.
 ```bash
 wget https://github.com/MediaBrowser/Emby.Releases/releases/download/4.8.8.0/emby-server-deb_4.8.8.0_amd64.deb
 ```
 
-<img src="https://github.com/JoelIzDa/Google-Cloud-Project/-/raw/main/img/web8.png" alt="Test">
+![Alt text of the image](https://github.com/JoelIzDa/Google-Cloud-Project/blob/main/img/web8.png)
 
 Nach der Installation musste ich ein Passwort für den Root-User setzen.
 ```bash
 sudo passwd root
 ```
 
-<img src="https://github.com/JoelIzDa/Google-Cloud-Project/-/raw/main/img/web9.png" alt="Test">
+![Alt text of the image](https://github.com/JoelIzDa/Google-Cloud-Project/blob/main/img/web9.png)
 
 Nun konnte ich mich einloggen.
 ```bash
 su root
 ```
 
-<img src="https://github.com/JoelIzDa/Google-Cloud-Project/-/raw/main/img/web10.png" alt="Test">
+![Alt text of the image](https://github.com/JoelIzDa/Google-Cloud-Project/blob/main/img/web10.png)
 
 Ich erstelle einen neuen Benutzer.
 ```bash
 dpkg -i emby-server-deb_4.8.8.0_amd64.deb
 ```
 
-<img src="https://github.com/JoelIzDa/Google-Cloud-Project/-/raw/main/img/web11.png" alt="Test">
+![Alt text of the image](https://github.com/JoelIzDa/Google-Cloud-Project/blob/main/img/web11.png)
 
 **Schritt 4:** Ich erstelle eine neue Firewall-Rule und nenne sie embyrule mit folgender Konfiguration:
 
-<img src="https://github.com/JoelIzDa/Google-Cloud-Project/-/raw/main/img/web12.png" alt="Test">
+![Alt text of the image](https://github.com/JoelIzDa/Google-Cloud-Project/blob/main/img/web12.png)
 
-<img src="https://github.com/JoelIzDa/Google-Cloud-Project/-/raw/main/img/web13.png" alt="Test">
+![Alt text of the image](https://github.com/JoelIzDa/Google-Cloud-Project/blob/main/img/web13.png)
 
 Nachdem ich die Firewall-Rule erstellt habe sieht man diese in der Übersicht.
 
-<img src="https://github.com/JoelIzDa/Google-Cloud-Project/-/raw/main/img/web14.png" alt="Test">
+![Alt text of the image](https://github.com/JoelIzDa/Google-Cloud-Project/blob/main/img/web14.png)
 
 **Schritt 5:** Ich gehe zurück zur VM-Instance und klicke auf "Edit".
 
-<img src="https://github.com/JoelIzDa/Google-Cloud-Project/-/raw/main/img/web15.png" alt="Test">
+![Alt text of the image](https://github.com/JoelIzDa/Google-Cloud-Project/blob/main/img/web15.png)
 
 Bei Netzwork-Tags füge ich die neue Firewall-Rule hinzu.
 
-<img src="https://github.com/JoelIzDa/Google-Cloud-Project/-/raw/main/img/web16.png" alt="Test">
+![Alt text of the image](https://github.com/JoelIzDa/Google-Cloud-Project/blob/main/img/web16.png)
 
 **Schritt 6:** Anschliessend kann ich den Media-Server, welcher in der Cloud betrieben wird in meinem Browser öffnen.
 **URL:** http://35.195.66.149:8096
 
-<img src="https://github.com/JoelIzDa/Google-Cloud-Project/-/raw/main/img/web17.png" alt="Test">
+![Alt text of the image](https://github.com/JoelIzDa/Google-Cloud-Project/blob/main/img/web17.png)
 
 Als nächstes habe ich einen neuen Benutzer erstellt. Dieser Benutzer ist für die administration des Mediaservers notwendig.
 
-<img src="https://github.com/JoelIzDa/Google-Cloud-Project/-/raw/main/img/web18.png" alt="Test">
+![Alt text of the image](https://github.com/JoelIzDa/Google-Cloud-Project/blob/main/img/web18.png)
 
 "Next"
 
-<img src="https://github.com/JoelIzDa/Google-Cloud-Project/-/raw/main/img/web19.png" alt="Test">
+![Alt text of the image](https://github.com/JoelIzDa/Google-Cloud-Project/blob/main/img/web19.png)
 
 "Next"
 
-<img src="https://github.com/JoelIzDa/Google-Cloud-Project/-/raw/main/img/web20.png" alt="Test">
+![Alt text of the image](https://github.com/JoelIzDa/Google-Cloud-Project/blob/main/img/web20.png)
 
 "Next"
 
-<img src="https://github.com/JoelIzDa/Google-Cloud-Project/-/raw/main/img/web21.png" alt="Test">
+![Alt text of the image](https://github.com/JoelIzDa/Google-Cloud-Project/blob/main/img/web21.png)
 
 Nun kann ich mich mit dem zuvor erstellten Benutzer anmelden.
 
-<img src="https://github.com/JoelIzDa/Google-Cloud-Project/-/raw/main/img/web22.png" alt="Test">
+![Alt text of the image](https://github.com/JoelIzDa/Google-Cloud-Project/blob/main/img/web22.png)
 
-<img src="https://github.com/JoelIzDa/Google-Cloud-Project/-/raw/main/img/web23.png" alt="Test">
+![Alt text of the image](https://github.com/JoelIzDa/Google-Cloud-Project/blob/main/img/web23.png)
 
 **Schritt 7:** Ich erstelle ein neues Verzeichnis. In diesem Verzeichnis werden die Dateien später hochgeladen.
 
-<img src="https://github.com/JoelIzDa/Google-Cloud-Project/-/raw/main/img/web24.png" alt="Test">
+![Alt text of the image](https://github.com/JoelIzDa/Google-Cloud-Project/blob/main/img/web24.png)
 
 Danach erstelle ich eine neue Bibliothek.
 
-<img src="https://github.com/JoelIzDa/Google-Cloud-Project/-/raw/main/img/web25.png" alt="Test">
+![Alt text of the image](https://github.com/JoelIzDa/Google-Cloud-Project/blob/main/img/web25.png)
 
 Anschliessend auf "Add" klicken, um eine neue hinzuzufügen.
 
-<img src="https://github.com/JoelIzDa/Google-Cloud-Project/-/raw/main/img/web26.png" alt="Test">
+![Alt text of the image](https://github.com/JoelIzDa/Google-Cloud-Project/blob/main/img/web26.png)
 
 In dem Menü muss man unter Folder den Pfad zum erstellten Ordner eintragen.
 In meinem Fall wäre das "/home/marentonizda/hmovies"
 
-<img src="https://github.com/JoelIzDa/Google-Cloud-Project/-/raw/main/img/web27.png" alt="Test">
+![Alt text of the image](https://github.com/JoelIzDa/Google-Cloud-Project/blob/main/img/web27.png)
 
 Nun sieht man die neue erstellte Bibliothek.
 
-<img src="https://github.com/JoelIzDa/Google-Cloud-Project/-/raw/main/img/web28.png" alt="Test">
+![Alt text of the image](https://github.com/JoelIzDa/Google-Cloud-Project/blob/main/img/web28.png)
 
 **Schritt 8:** Als nächstes generiere ich einen SSH-Key und speichere den Schlüssel in dem Ordner "C:\Users\Joels\.ssh\embly.pub"
 
-<img src="https://github.com/JoelIzDa/Google-Cloud-Project/-/raw/main/img/web29.png" alt="Test">
+![Alt text of the image](https://github.com/JoelIzDa/Google-Cloud-Project/blob/main/img/web29.png)
 
-<img src="https://github.com/JoelIzDa/Google-Cloud-Project/-/raw/main/img/web30.png" alt="Test">
+![Alt text of the image](https://github.com/JoelIzDa/Google-Cloud-Project/blob/main/img/web30.png)
 
 Anschliessend kopiere ich den Schlüssel in die Google Cloud VM Instance.
 
-<img src="https://github.com/JoelIzDa/Google-Cloud-Project/-/raw/main/img/web31.png" alt="Test">
+![Alt text of the image](https://github.com/JoelIzDa/Google-Cloud-Project/blob/main/img/web31.png)
 
 **Schritt 9:** Als nächstes öffne ich die Anwendung "FileZilla".
 
-<img src="https://github.com/JoelIzDa/Google-Cloud-Project/-/raw/main/img/web32.png" alt="Test">
+![Alt text of the image](https://github.com/JoelIzDa/Google-Cloud-Project/blob/main/img/web32.png)
 
 Im Server Manager muss ich die erstellte Google Cloud VM Instance hinzufügen.
 **Wichtige Daten:**
@@ -664,19 +662,19 @@ ProtokolL: SFTP (SSH File Transfer Protocol)
 Host: 35.195.66.149 (External IP-Adresse von der VM)
 Schlüsseldatei: C:\Users\joels\.ssh\embly
 
-<img src="https://github.com/JoelIzDa/Google-Cloud-Project/-/raw/main/img/web33.png" alt="Test">
+![Alt text of the image](https://github.com/JoelIzDa/Google-Cloud-Project/blob/main/img/web33.png)
 
 Nach dem abschliessen sehe ich, dass die Verbindung funktioniert hat.
 
-<img src="https://github.com/JoelIzDa/Google-Cloud-Project/-/raw/main/img/web34.png" alt="Test">
+![Alt text of the image](https://github.com/JoelIzDa/Google-Cloud-Project/blob/main/img/web34.png)
 
 Für den Transfer der Medien habe ich 3 img heruntergeladen und diese von meinem lokalen Downloads Ordner in den Ordner vom Media Server geladen.
 
-<img src="https://github.com/JoelIzDa/Google-Cloud-Project/-/raw/main/img/web36.png" alt="Test">
+![Alt text of the image](https://github.com/JoelIzDa/Google-Cloud-Project/blob/main/img/web36.png)
 
 **Schritt 10:** Nach der erfolgreichen Übertragung konnte ich prüfen, ob die Daten auch wirklich in den MediaServer geladen wurden.
 
-<img src="https://github.com/JoelIzDa/Google-Cloud-Project/-/raw/main/img/web37.png" alt="Test">
+![Alt text of the image](https://github.com/JoelIzDa/Google-Cloud-Project/blob/main/img/web37.png)
 
 Die Medien können erfolgreich auf den MedienServer geladen werden. Der Service ermöglicht es, Medieninhalte effizient zu verwalten und von überall darauf zuzugreifen, was ihn zu einer idealen Lösung für moderne Medienverwaltung und -bereitstellung macht.
 
@@ -689,8 +687,7 @@ SSH Public Key: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCtsQ4IzsIfa87cJtE+oemYh2Ta
 ------------------------
 
 # Minecraft Server auf Google Cloud betreiben.
-
-<img src="https://github.com/JoelIzDa/Google-Cloud-Project/-/raw/main/img/Netzwerkplan-Minecraft1.png" alt="Test">
+![Alt text of the image](https://github.com/JoelIzDa/Google-Cloud-Project/blob/main/img/Netzwerkplan-Minecraft1.png)
 
 
 In diesem Projekt wird ein Minecraft-Server in der Google Cloud gehostet und verwaltet. Der Server wird innerhalb einer virtuellen Maschine bereitgestellt und kann über eine SSH-Verbindung administriert werden. Die gesamte Konfiguration und Bereitstellung des Servers erfolgt codebasiert, was eine einfache Migration ermöglicht.
@@ -698,10 +695,9 @@ In diesem Projekt wird ein Minecraft-Server in der Google Cloud gehostet und ver
 **Virtuelle Instanz vorbereiten**
 Name: minecraft-server
 
-<img src="https://github.com/JoelIzDa/Google-Cloud-Project/-/raw/main/img/CreateVM.png" alt="Test">
+![Alt text of the image](https://github.com/JoelIzDa/Google-Cloud-Project/blob/main/img/CreateVM.png)
 
-
-<img src="https://github.com/JoelIzDa/Google-Cloud-Project/-/raw/main/img/CreateVM1.png" alt="Test">
+![Alt text of the image](https://github.com/JoelIzDa/Google-Cloud-Project/blob/main/img/CreateVM1.png)
 
 
 **Disk Formatting and Mounting**
@@ -767,15 +763,14 @@ nano server.properties
 
 Das File sieht wie folgt aus:
 
-<img src="https://github.com/JoelIzDa/Google-Cloud-Project/-/raw/main/img/properties2.png" alt="Test">
-
+![Alt text of the image](https://github.com/JoelIzDa/Google-Cloud-Project/blob/main/img/properties2.png)
 
 ## Firewall Regel erstellen
 Nachdem der Minecraft Server erfolgreich erstellt wurde muss ich eine Firewall-Regel erstellen. Ohne diese Regel können keine Spieler auf den Minecraft Server connecten. Der Port muss geöffnet werden, damit der Server public ist. Die Regel wird in folgenden Schritten erstellt:
 
 Ich habe den zuvor erstellten Tag "minecraft-server" eingetragen und die source IP Range auf 0.0.0.0/0. Anschliessend habe ich den Port 25565 gesetzt. Dieser ist später wichtig für die Verbindung zum Minecraft Server.
 
-<img src="https://github.com/JoelIzDa/Google-Cloud-Project/-/raw/main/img/Firewall.png" alt="Test">
+![Alt text of the image](https://github.com/JoelIzDa/Google-Cloud-Project/blob/main/img/Firewall.png)
 
 Nach der Erstellung der Firewall konnte ich mit dem Testing fortfahren, da alle nötigen Schritte nun durchgeführt wurden.
 
@@ -785,13 +780,12 @@ Als erstes habe ich auf der Website https://mcsrvstat.us/ nachgeschaut, ob der S
 **Server-Adresse:** 34.175.175.3:25565
 **Version:** 1.20.2
 
-<img src="https://github.com/JoelIzDa/Google-Cloud-Project/-/raw/main/img/TestingMC1.png?ref_type=heads" alt="Test">
+![Alt text of the image](https://github.com/JoelIzDa/Google-Cloud-Project/blob/main/img/TestingMC1.png)
 
 Nachdem dies erfolgreich funktionierte habe ich Minecraft gestartet. Dort habe ich mich auf den Server verbunden. Dies war erfolgreich und ich konnte mich frei im Server bewegen. Für die ausführliche nachvollziehung habe ich ein Video aufgenommen.
 
 **Video Vorschau**
-
-![Video Vorschau](https://github.com/JoelIzDa/Google-Cloud-Project/-/raw/main/TestingMC3.mp4)
+![Alt text of the image](https://github.com/JoelIzDa/Google-Cloud-Project/blob/main/img/TestingMC3.mp4)
 
 ## Minecraft Server Monitoring
 Um den Traffic des Minecraft Servers zu überwachen, musste ich einige Schritte vorgehen. Zuerst aktualisierte ich die Paketliste des Paketmanagers, um sicherzustellen, dass die neuesten Versionen der Pakete und deren Abhängigkeiten installieren kann.
@@ -836,7 +830,7 @@ Zum Schluss überprüfte ich den Status des Google Cloud Ops Agent, um sicherzus
 sudo service google-cloud-ops-agent status
 ```
 
-<img src="https://github.com/JoelIzDa/Google-Cloud-Project/-/raw/main/img/Monitoring1.png?ref_type=heads" alt="Test">
+![Alt text of the image](https://github.com/JoelIzDa/Google-Cloud-Project/blob/main/img/Monitoring1.png)
 
 Im Monitoring sieht man die wichtigsten Daten. Im GUI der Google Cloud kann man folgende Informationen vom Diagramm auslesen:
 
@@ -849,7 +843,7 @@ Diese Statistik gibt Informationen darüber, wie ausgelastet der Server ist. Ein
 **3. tcp_connections**
 Überwacht die Anzahl der Verbindungen, die zu meinem Server bestehen. Diese könnte die Anzahl der Spieler zeigen, die momentan auf dem Server spielen oder andere Verbindungen, wie z.B von Verwaltungstools.
 
-<img src="https://github.com/JoelIzDa/Google-Cloud-Project/-/raw/main/img/Monitoring2.png?ref_type=heads" alt="Test">
+![Alt text of the image](https://github.com/JoelIzDa/Google-Cloud-Project/blob/main/img/Monitoring2.png.png)
 
 # Containerisierung des Minecraft Server
 Die Containerisierung des bestehenden Minecraft Servers bringt mehrere Vorteile mit sich, wie z.B:
@@ -861,7 +855,7 @@ Die Containerisierung des bestehenden Minecraft Servers bringt mehrere Vorteile 
 
 Die Umgebung sieht nach der Containerisierung wie folgt aus:
 
-<img src="https://github.com/JoelIzDa/Google-Cloud-Project/-/raw/main/img/Netzwerkplan-Minecraft-Docker.png" alt="Test">
+![Alt text of the image](https://github.com/JoelIzDa/Google-Cloud-Project/blob/main/img/Netzwerkplan-Minecraft-Docker.png)
 
 **Erste Schritte zur Vorbereitung von Docker:**
 sudo apt update
@@ -916,7 +910,7 @@ docker run -d -p 25565:25565 --name minecraft-server -v minecraft-data:/minecraf
 3. npm start
 4. http://localhost:3000
 
-<img src="https://github.com/JoelIzDa/Google-Cloud-Project/-/raw/main/img/React-Anwendung-Json.png" alt="Test">
+![Alt text of the image](https://github.com/JoelIzDa/Google-Cloud-Project/blob/main/img/React-Anwendung-Json.png)
 
 ## Übersicht nützliche Befehle mit Kubernetes
 Um die Konfiguration des Klusters anzuzeigen:
