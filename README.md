@@ -1,63 +1,63 @@
-# M300 - Plattformübergreifende Dienste in ein Netzwerk integrieren
+# M300 - Integrate cross-platform services into a network
 
-## Einleitung
-Diese Dokumentation umfasst das Projekt, welches im Modul 300 bewältigt wurde. Da ich mich das erste Mal mit der Google Cloud auseinandersetzte, hab ich mich dazu entschieden mehrere kleine Teilprojekte zu erstellen. Dies hilft mir verschiedene Services innerhalb der Google Cloud zu testen und kennenzulernen. Im Inhaltsverzeichnis ist vermerkt, welche Themenbereiche angeschnitten wurden.
+## Introduction
+This documentation covers the project that was completed in module 300. As this was my first time dealing with the Google Cloud, I decided to create several small sub-projects. This helps me to test and get to know different services within the Google Cloud. The table of contents shows which topics were covered.
 
-## Projektbeschrieb
-**1. Google Kubernetes Engine Environment aufsetzen**
-In diesem Abschnitt wurde die Umgebung für die Google Kubernetes Engine (GKE) eingerichtet. Die Schritte beinhalteten die Aktivierung der Kubernetes Engine API, das Einrichten eines Kubernetes Clusters und das Erstellen sowie Bauen einer React-Anwendung. Anschliessend wurde ein Docker-Image der Anwendung erstellt und in Google Container Registry (GCR) hochgeladen. Die Anwendung wurde schliesslich als Kubernetes Deployment und Service bereitgestellt. Der Status der Bereitstellung wurde überprüft und die Funktionen getestet.
+## Project description
+**1. Set up Google Kubernetes Engine Environment**
+In this section, the environment for the Google Kubernetes Engine (GKE) was set up. The steps included activating the Kubernetes Engine API, setting up a Kubernetes cluster and creating and building a React application. A Docker image of the application was then created and uploaded to Google Container Registry (GCR). The application was finally deployed as a Kubernetes deployment and service. The status of the deployment was checked and the functions tested.
 
-**2. Verwaltung des React-App-Services**
-Dieser Teil des Projekts befasste sich mit der Verwaltung des React-App-Services innerhalb des Kubernetes Clusters. Es wurden die erforderlichen Dateien eingerichtet, der Status der laufenden Pods überprüft und gegebenenfalls gestoppt.
+**2. Management of the React app service**
+This part of the project dealt with the administration of the React app service within the Kubernetes cluster. The required files were set up, the status of the running pods was checked and stopped if necessary.
 
-**3. MySQL-Datenbank in Kubernetes erstellen**
-Ein weiteres Teilprojekt beinhaltete die Erstellung und Verwaltung einer MySQL-Datenbank innerhalb des Kubernetes Clusters. Dies umfasste die Konfiguration und Bereitstellung der Datenbankdienste sowie die Sicherstellung der Datenpersistenz.
+**3. Create MySQL database in Kubernetes**
+Another sub-project involved the creation and administration of a MySQL database within the Kubernetes cluster. This included configuring and providing the database services and ensuring data persistence.
 
-**4. MediaServer konfigurieren**
-In diesem Abschnitt wurde ein MediaServer aufgesetzt und konfiguriert, um img und Videos in der Google Cloud zu speichern und zu verwalten. Die Konfiguration beinhaltete die Installation und Einrichtung des MediaServers sowie die Verwaltung von Benutzerkonten und Medienbibliotheken. Das Ganze wurde mit dem emby Service erstellt.
+**4. Configure MediaServer**
+In this section, a MediaServer was set up and configured to store and manage img and videos in the Google Cloud. The configuration included the installation and setup of the MediaServer as well as the management of user accounts and media libraries. The whole thing was created with the emby service.
 
-**5.1 Minecraft Server auf Google Cloud betreiben**
-Ein besonderes Highlight war das Einrichten eines Minecraft Servers in der Google Cloud. Die Schritte umfassten das Erstellen einer virtuellen Instanz, das Formatieren und Mounten der Disk, das Herunterladen und Aufsetzen des Minecraft Servers sowie die Installation von Fabric. Der Server wurde konfiguriert, eine Firewall-Regel erstellt und schliesslich getestet.
+**5.1 Run Minecraft Server on Google Cloud**
+A particular highlight was setting up a Minecraft server in the Google Cloud. The steps included creating a virtual instance, formatting and mounting the disk, downloading and setting up the Minecraft server and installing Fabric. The server was configured, a firewall rule was created and finally tested.
 
-**5.2 Containersierung des Minecraft Servers**
-Abschliesend wollte ich den Minecraft Server in einen Docker Container migrieren und in die Google Kubernetes Engine (GKE) integrieren. Leider hat das Ganze nicht so geklappt, wie ich wollte, da etwas mit den API-Berechtigungen nicht stimmte. Ich konnte den Fehler nach langer analysierung nicht finden.
+**5.2 Containerization of the Minecraft server**
+Finally, I wanted to migrate the Minecraft server into a Docker container and integrate it into the Google Kubernetes Engine (GKE). Unfortunately, the whole thing didn't work out the way I wanted because something was wrong with the API permissions. I couldn't find the error after a long analysis.
 
-## Inhaltsverzeichnis
+## Table of contents
 
 [TOC]
 
 ---
 
-# Google Kubernetes Engine Environment aufsetzen
-In diesem Teilprojekt setze ich ein Kubernetes Enginge Environment auf und betreibe dieses.
+# Set up Google Kubernetes Engine Environment
+In this subproject I set up and operate a Kubernetes Enginge Environment.
 
-Als erstes habe ich mich in der Google Cloud Angemeldet. Link: https://console.cloud.google.com
+The first thing I did was log in to the Google Cloud Console - Link: https://console.cloud.google.com
 
-Anschliessend habe ich ein neues Projekt erstellt.
+I then created a new project with following data:
 - Name: micorservice-m300
 - ID: micorservice-m300
 - Nummer: 439958502201
 
-Zunächst habe ich die Shell in der Google Cloud geöffnet und die Version geprüft.
-Anschliessend habe ich eine React App erstellt:
+First, I opened the shell in the Google Cloud and checked the version.
+Then I created a React app:
 
 ```bash
 npx create-react-app my-react-app
 ```
 
-Als nächstes wechsle ich in das Verzeichnis meiner neu erstellten React-Anwendung.
+Next, I change to the directory of my newly created React application.
 
 ```bash
 cd my-react-app
 ```
 
-Mit dem nächsten Befehl startete ich meine React-Anwendung.
+I started my React application with the next command.
 
 ```bash
 npm start
 ```
 
-Nach dem Ausführen von npm start erhalte ich eine Meldung mit den URLs, unter denen meine React-Anwendung erreichbar ist. Normalerweise ist dies http://localhost:3000. Ich öffne diese URL in meinem Webbrowser, um meine React-Anwendung zu sehen und mit ihr zu interagieren. 
+After running npm start, I get a message with the URLs where my React application can be reached. Normally this is http://localhost:3000. I open this URL in my web browser to see and interact with my React application.
 
 ```bash
 You can now view my-react-app in the browser.
@@ -68,13 +68,13 @@ You can now view my-react-app in the browser.
 
 ![Alt text of the image](https://github.com/joelschellenberg/Google-Cloud-Project/blob/main/img/NewProject.png)
 
-Um meine Anwendung für die Bereitstellung auf einem Live-Server vorzubereiten, führe ich folgenden Befehl aus:
+To prepare my application for deployment to a live server, I run the following command:
 
 ```bash
 npm run build
 ```
 
-Anschliessend kommt folgendes:
+This is followed by the following:
 
 ```Bash
 The build folder is ready to be deployed.
@@ -84,25 +84,25 @@ You may serve it with a static server:
   serve -s build
   ```
 
-Ergebnis im Browser:
+Result in the browser:
 
 ![Alt text of the image](https://github.com/joelschellenberg/Google-Cloud-Project/blob/main/img/ReactAppBrowser.png)
 
 
-## Docker Container Deploy
+## Deploy a Docker Container
 
 ```bash
 gcloud services enable container.googleapis.com containerregistry.googleapis.com
 ```
 
-Anschliessend erstellte ich den Cluster namens "m300-project-cluster".
-Zuerst hatte ich Probleme mit der Erstellung, da die Zone "europe-west1-a" überlastet war. Ich habe mich dann entschieden auf die Zone "europe-west1-c" zu wechseln.
+I then created the cluster called “m300-project-cluster”.
+At first I had problems with the creation because the zone “europe-west1-a” was overloaded. I then decided to switch to the “europe-west1-c” zone.
 
 ```bash
 gcloud container clusters create m300-project-cluster --zone europe-west1-c
 ```
 
-Ergebnis war folgendes:
+The result was as follows:
 
 ```Bash
 Default change: VPC-native is the default mode during cluster creation for versions greater than 1.21.0-gke.1500. To create advanced routes based clusters, please pass the `--no-enable-ip-alias` flag
@@ -121,34 +121,34 @@ NUM_NODES: 3
 STATUS: RUNNING
 ```
 
-Anschliessend
+Subsequently
 
 ```Bash
 gcloud container clusters get-credentials m300-project-cluster --zone europe-west1-c
 ```
 
-Ergebnis:
+Result:
 ![Alt text of the image](https://github.com/joelschellenberg/Google-Cloud-Project/blob/main/img/cluster1.png)
 
 
-Die Datei kann mit folgendem Befehl editiert werden.
+The file can be edited with the following command.
 
 ```bash
 cloudshell edit app.js
 ```
 
-## File editieren in der Shell
+## Edit file within the cloud shell
 
-File editieren mit:
+Edit file:
 ```bash
 nano app.js
 ```
-File auslesen mit:
+Read file:
 ```bash
 cat app.js
 ```
 
-Vorbereitung yaml file:
+Preparation yaml file:
 
 ```yaml
 apiVersion: v1
@@ -166,36 +166,38 @@ spec:
 ```
 
 # Kubernetes Engine 
-In dieser Anleitung wird Schritt für Schritt erklärt, wie man eine Kubernetes Engine in der Google Cloud erstellt.
+This guide explains step by step how to create a Kubernetes Engine in the Google Cloud.
 
-Informationen
-Projektname: microservice-m300
-ID: microservice-m300
+**Informations:**
+
+Project-Name: microservice-m300
+
+Project-ID: microservice-m300
 
 ---
 
-## Schritt 1 - Kubernetes Engine API aktivieren
-Zuerst wird mit dem Befehl das aktuelle Projekt ausgewählt.
+## Step 1 - Activate Kubernetes Engine API
+First select the current project with the command.
 
 ```Bash
 gcloud config set project microservice-m300
 ```
 
-Kubernetes Engine API aktivieren:
+Activate Kubernetes Engine API:
 ```Bash
 gcloud services enable container.googleapis.com
 ```
 
 ---
 
-## Schritt 2 - Kubernetes Cluster einrichten
-Nun erstellt man einen Kluster wie folgt. Bei der Zone muss man eine geeignete Zone nehmen. Dieser Vorgang wird einige Zeit dauern, da ein kompletter Kluster aufgebaut wird.
+## Step 2 - Set up the Kubernetes cluster
+Now create a cluster as follows. A suitable zone must be selected for the zone. This process will take some time, as a complete cluster is created.
 
 ```Bash
 gcloud container clusters create cluster-m300 --num-nodes 1 --zone europe-west1-c
 ```
 
-Nun braucht man die Credentials für die weitere Konfiguration.
+Now you need the credentials for further configuration.
 
 ```Bash
 gcloud container clusters get-credentials cluster-m300 --zone europe-west1-c
@@ -203,22 +205,22 @@ gcloud container clusters get-credentials cluster-m300 --zone europe-west1-c
 
 ---
 
-## Schritt 3 - React Anwendung erstellen und builden
-In diesem Schritt erstellen wir eine neue React-App:
+## Step 3 - Create and build React application
+In this step, we create a new React app:
 ```Bash
 npx create-react-app my-react-app
 cd my-react-app
 ```
 
-Build erstellen:
+Create build:
 ```Bash
 npm run build
 ```
 
 ---
 
-## Schritt 4 - Docker-Image erstellen und in GCR hochladen
-Das Dockerfile im Stammverzeichnis der Anwendung erstellen.
+## Step 4 - Create Docker image and upload to GCR
+Create the Dockerfile in the root directory of the application.
 ```bash
 # Dockerfile
 FROM nginx:alpine
@@ -227,25 +229,25 @@ EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
 ```
 
-Docker-Image bauen:
+Build Docker image:
 ```bash
 docker build -t gcr.io/micorservice-m300/my-react-app .
 ```
 
-Bei Google Cloud authentifizieren:
+Authenticate with Google Cloud:
 ```bash
 gcloud auth configure-docker
 ```
 
-Docker-Image zu GCR pushen:
+Push Docker image to GCR:
 ```bash
 docker push gcr.io/micorservice-m300/my-react-app
 ```
 
 ---
 
-## Schritt 5 - Kubernetes Deployment und Service erstellen
-YAML-File vorbereiten und speichern als "deployment.yaml"
+## Step 5 - Create Kubernetes deployment and service
+Prepare YAML file and save as “deployment.yaml”
 ```bash
 apiVersion: apps/v1
 kind: Deployment
@@ -268,7 +270,7 @@ spec:
         - containerPort: 80
 ```
 
-Nun muss ein Service YAML-File erstellt werden. "service.yaml"
+Now a service YAML file must be created. “service.yaml”
 ```bash
 apiVersion: v1
 kind: Service
@@ -283,7 +285,7 @@ spec:
     app: react-app
 ```
 
-Deployment und Service zu Kubernetes deployen:
+Deploy deployment and service files to Kubernetes:
 ```bash
 kubectl apply -f deployment.yaml
 kubectl apply -f service.yaml
@@ -291,94 +293,97 @@ kubectl apply -f service.yaml
 
 ---
 
-## Schritt 6 - Status überprüfen
-Pods überprüfen:
+## Step 6 - Check status
+Check pods:
 ```bash
 kubectl get pods
 ```
 
-Service überprüfen:
+Check services:
 ```bash
 kubectl get services
 ```
 
-Ergebnis bei mir in der Cloud Console:
+Result for me in the Cloud Console:
 
 ![Alt text of the image](https://github.com/joelschellenberg/Google-Cloud-Project/blob/main/img/kubectl-apply.png)
 
-## Schritt 7 - Funktionen testen
-In diesem Schritt geht es darum, dass ich die Anwendung teste.
-Ich schaue nach mit welcher External-IP meine Anwendung läuft.
+## Step 7 - Test functions
+This step is about testing the application.
+I check which external IP my application is running with.
+
 ```bash
 kubectl get services
 ```
 
 ![Alt text of the image](https://github.com/joelschellenberg/Google-Cloud-Project/blob/main/img/serviceipaddress.png)
 
-Die External-IP in diesem Fall ist 34.78.211.40. Diese IP-Adresse wird verwendet, um die App im Browser zu öffnen.
-Ich kann die Adresse "http://35.233.49.4" nun im Browser eingeben und kommen auf die App.
+The external IP in this case is 34.78.211.40. This IP address is used to open the app in the browser.
+I can now enter the address “http://35.233.49.4” in the browser and access the app.
 
 ![Alt text of the image](https://github.com/joelschellenberg/Google-Cloud-Project/blob/main/img/browserapp1.png)
 
-Nun werde ich testen, ob die Anwendung auch wirklich nicht mehr erreichbar ist, wenn ich die replicas auf 0 setze.
-Das Deployment kann mit folgendem Befehl skaliert werden:
+Now I will test whether the application is really no longer accessible if I set the replicas to 0.
+The deployment can be scaled with the following command:
+
 ```bash
 kubectl scale deployment react-app --replicas=0
 ```
 
-Der Service sollte zwar weiterhin existieren, aber keine laufenden Pods haben, um den Datenverkehr zu bedienen. Im Screenshot sieht man, dass die React-Anwendung gestoppt wurde.
+The service should still exist, but should not have any running pods to serve the traffic. In the screenshot you can see that the React application has been stopped.
 
 ![Alt text of the image](https://github.com/joelschellenberg/Google-Cloud-Project/blob/main/img/browserapp2.png)
 
-Umgekehrt funktioniert dies natürlich auch.
-```bash
+Of course, this also works the other way round.
 
+```bash
 kubectl scale deployment react-app --replicas=4
 ```
+
 ![Alt text of the image](https://github.com/joelschellenberg/Google-Cloud-Project/blob/main/img/browserapp3.png)
 
 -------------------
 
-## Verwaltung vom React-App-Service
+## Management of the React app service
 
-### Erforderliche Dateien
-Sicherstellten, dass folgende Dateien im Verzeichnis der React Applikation vorhanden sind:
+### Required files
+Ensure that the following files are present in the React application directory:
 - deployment.yaml
 - service.yaml
 - Dockerfile
 
-### Einrichtung
-Als erstes werden mit folgendem Befehl die Kubernetes-Cluster-Zugangsdaten abgerufen.
+### Install
+First, the Kubernetes cluster access data is retrieved with the following command.
 ```bash
 gcloud container clusters get-credentials m300-project-cluster --zone europe-west1-c
 ```
 
-Anschliessend wird das Deployment und der Service bereitgestellt.
+The deployment and the service are then provided.
 ```bash
 kubectl apply -f deployment.yaml
 kubectl apply -f service.yaml
 ```
 
 ### Status prüfen
-Nachdem die Files bereitgestellt wurden, wird der Service wie folgt getestet.
+After the files have been provided, the service is tested as follows.
 ```bash
 kubectl get pods
 kubectl get services
 ```
 
-### Laufende Pods stoppen
+### Stop running pods
 
-Deployments auflisten: 
+List deployments:
 ```bash
 kubectl get deployments
 ```
 
-Mit dem herausgefundenen Deploymentnamen "react-app" replicas auf 0 setzen:
+Set replicas to 0 with the found deployment name “react-app”:
 ```bash
 kubectl scale deployment react-app --replicas=0
 ```
 
-Nun Sieht man, dass alle Pods heruntergefahren wurden:
+Now you can see that all pods have been shut down:
 ```bash
 kubectl get pods
 ```
@@ -386,15 +391,15 @@ kubectl get pods
 
 ---
 
-# MySQL-Datenbank in Kubernetes erstellen.
-Ich habe mich entschieden eine Datenbank zu erstellen und diese in der React-App zu betreiben. Es ist mir klar, dass in einer Produktionsumgebung die Datenbank und die Anwendung getrennt voneinander hosten würde. In einer Entwicklungsumgebung kann es meiner meinung nach jedoch akzeptabel sein, beides zusammenzufassen,um die Einrichtung zu vereinfachen.
+# Create MySQL database in Kubernetes.
+I have decided to create a database and run it in the React app. I realize that in a production environment, the database and the application would be hosted separately. However, in a development environment, I think it may be acceptable to combine the two to simplify the setup.
 
-Zuerst erstelle ich ein neues Verzeichnis für die MySQL-Konfigurationsdateien:
+First, I create a new directory for the MySQL configuration files:
 ```Bash
 mkdir mysql
 ```
 
-Anschliessend habe ich eine neue Datei Namens "mysql-pv.yaml" erstellt und die erforderlichen Daten eingefügt:
+I then created a new file called “mysql-pv.yaml” and inserted the required data:
 ```Bash
 nano mysql-pv.yaml
 ```
@@ -427,7 +432,7 @@ spec:
 
 ```
 
-Zunächst habe ich das Deployment-File erstellt:
+First, I created the deployment file:
 ```Bash
 nano mysql-deployment.yaml
 ```
@@ -461,7 +466,7 @@ spec:
               mountPath: /var/lib/mysql
 ```
 
-Anschliessend habe ich as Service-File erstellt:
+I then created the service file:
 
 ```bash
 nano mysql-service.yaml
@@ -478,7 +483,7 @@ spec:
     app: mysql
 ```
 
-Mit den folgenden Befehlen stelle ich die YAML-Dateien bereit.
+I provide the YAML files with the following commands.
 
 ```bash
 kubectl apply -f mysql-pv.yaml
@@ -486,7 +491,7 @@ kubectl apply -f mysql-deployment.yaml
 kubectl apply -f mysql-service.yaml
 ```
 
-Die Services und Pods prüfe ich dann:
+I will then check the services and pods:
 
 ```bash
 kubectl get pods
@@ -494,26 +499,26 @@ kubectl get services
 ```
 ![Alt text of the image](https://github.com/joelschellenberg/Google-Cloud-Project/blob/main/img/database-1.png)
 
-Danach starte ich einen temporären MySQL-ClientPod und verbinde mich mit der Datenbank.
+I then start a temporary MySQL ClientPod and connect to the database.
 
 ```bash
 kubectl run -it --rm --image=mysql:5.7 --restart=Never mysql-client -- mysql -h mysql -p
 ```
 
-Mit diesem Befehl kann man sich dann auf die Datenbank connecten:
+This command can then be used to connect to the database:
 ```bash
 kubectl exec -it <mysql-client-pod-name> -- mysql -u root -p
 ```
 
-# MediaServer konfigurieren
-Ich habe meinen persönlichen Mediaserver aufgesetzt, welcher auf der Google Cloud läuft. Dieser ist nützlich, um img und Videos in der Cloud zu speichern. Das spezielle daran ist, dass die img privat gespeichert werden und nicht für jeden zugänglich sind. Dazu habe ich für meine Orientierung einen Netzplan erstellt. Der Mediaserver wird in einer virtuellen Maschine betrieben, welche in der Google Cloud aufgesetzt wurde. Der Zugriff funktioniert über eine ssh-Verbindung. **Es ist jedoch wichtig zu beachten, dass der Mediaserver nicht in einem Docker Container umgesetzt wurde. Dies war zuerst so geplant, doch es stellte sich heraus, dass es nicht viel Sinn machen würde.**
+# Configure Mediaserver
+I have set up my personal media server, which runs on the Google Cloud. This is useful for storing img and videos in the cloud. The special thing about it is that the img is stored privately and is not accessible to everyone. I have created a network map for my orientation. The media server is operated in a virtual machine that was set up in the Google Cloud. Access works via an ssh connection. **However, it is important to note that the media server was not implemented in a Docker container. This was initially planned, but it turned out that it would not make much sense.
 
 ![Alt text of the image](https://github.com/joelschellenberg/Google-Cloud-Project/blob/main/img/Netzwerkplan-emby.png)
 
-**Projektname: mediasrvm300**
-Root-User Passwort: xxx
+**Project name: mediasrvm300**
+Root user password: xxx
 
-**Schritt 1:** Als erstes erstelle ich eine neue VM-Instance in der Google Cloud.
+**Step 1:** First, I create a new VM instance in the Google Cloud.
 - **Name:** emby
 - **Region:** europe-west1
 - **Zone:** europe-west1-b
@@ -523,19 +528,19 @@ Machine Type: e2-standard-2 (2 vCPU, 1 core, 8GB memory)
 
 ![Alt text of the image](https://github.com/joelschellenberg/Google-Cloud-Project/blob/main/img/web2.png)
 
-**Schritt 3:** Die Boot-Disk musste ich mit Ubuntu konfigurieren, da der Service mit Linux arbeitet. Anschliessend musste ich noch HTTP und HTTPS akzeptieren.
+**Step 3:** I had to configure the boot disk with Ubuntu, as the service works with Linux. Then I had to accept HTTP and HTTPS.
 
 ![Alt text of the image](https://github.com/joelschellenberg/Google-Cloud-Project/blob/main/img/web3.png)
 
-Nun sehe ich, dass die Virtuelle Maschine erstellt wurde.
+Now I see that the virtual machine has been created.
 
 ![Alt text of the image](https://github.com/joelschellenberg/Google-Cloud-Project/blob/main/img/web4.png)
 
-**Schritt 4:** Zunächst erstelle ich eine Verbindung mit der SSH-Cloud-Shell.
+**Step 4:** First, I create a connection with the SSH cloud shell.
 
 ![Alt text of the image](https://github.com/joelschellenberg/Google-Cloud-Project/blob/main/img/web5.png)
 
-Ich aktualisiere Ubuntu.
+I am updating Ubuntu.
 ```bash
 sudo apt-get update
 ```
@@ -548,58 +553,58 @@ sudo apt-get upgrade
 
 ![Alt text of the image](https://github.com/joelschellenberg/Google-Cloud-Project/blob/main/img/web7.png)
 
-Nach der aktualisierung von Ubuntu lade ich die Ubuntu-Anwendung herunter.
+After updating Ubuntu, I download the Ubuntu application.
 ```bash
 wget https://github.com/MediaBrowser/Emby.Releases/releases/download/4.8.8.0/emby-server-deb_4.8.8.0_amd64.deb
 ```
 
 ![Alt text of the image](https://github.com/joelschellenberg/Google-Cloud-Project/blob/main/img/web8.png)
 
-Nach der Installation musste ich ein Passwort für den Root-User setzen.
+After the installation, I had to set a password for the root user.
 ```bash
 sudo passwd root
 ```
 
 ![Alt text of the image](https://github.com/joelschellenberg/Google-Cloud-Project/blob/main/img/web9.png)
 
-Nun konnte ich mich einloggen.
+Now I was able to log in.
 ```bash
 su root
 ```
 
 ![Alt text of the image](https://github.com/joelschellenberg/Google-Cloud-Project/blob/main/img/web10.png)
 
-Ich erstelle einen neuen Benutzer.
+I create a new user.
 ```bash
 dpkg -i emby-server-deb_4.8.8.0_amd64.deb
 ```
 
 ![Alt text of the image](https://github.com/joelschellenberg/Google-Cloud-Project/blob/main/img/web11.png)
 
-**Schritt 4:** Ich erstelle eine neue Firewall-Rule und nenne sie embyrule mit folgender Konfiguration:
+**Step 4:** I create a new firewall rule and name it embyrule with the following configuration:
 
 ![Alt text of the image](https://github.com/joelschellenberg/Google-Cloud-Project/blob/main/img/web12.png)
 
 ![Alt text of the image](https://github.com/joelschellenberg/Google-Cloud-Project/blob/main/img/web13.png)
 
-Nachdem ich die Firewall-Rule erstellt habe sieht man diese in der Übersicht.
+After I have created the firewall rule, you can see it in the overview.
 
 ![Alt text of the image](https://github.com/joelschellenberg/Google-Cloud-Project/blob/main/img/web14.png)
 
-**Schritt 5:** Ich gehe zurück zur VM-Instance und klicke auf "Edit".
+**Step 5:** I go back to the VM instance and click on “Edit”.
 
 ![Alt text of the image](https://github.com/joelschellenberg/Google-Cloud-Project/blob/main/img/web15.png)
 
-Bei Netzwork-Tags füge ich die neue Firewall-Rule hinzu.
+I add the new firewall rule to network tags.
 
 ![Alt text of the image](https://github.com/joelschellenberg/Google-Cloud-Project/blob/main/img/web16.png)
 
-**Schritt 6:** Anschliessend kann ich den Media-Server, welcher in der Cloud betrieben wird in meinem Browser öffnen.
+**Step 6:** I can then open the media server, which is operated in the cloud, in my browser.
 **URL:** http://35.195.66.149:8096
 
 ![Alt text of the image](https://github.com/joelschellenberg/Google-Cloud-Project/blob/main/img/web17.png)
 
-Als nächstes habe ich einen neuen Benutzer erstellt. Dieser Benutzer ist für die administration des Mediaservers notwendig.
+Next, I created a new user. This user is necessary for the administration of the media server.
 
 ![Alt text of the image](https://github.com/joelschellenberg/Google-Cloud-Project/blob/main/img/web18.png)
 
@@ -615,70 +620,70 @@ Als nächstes habe ich einen neuen Benutzer erstellt. Dieser Benutzer ist für d
 
 ![Alt text of the image](https://github.com/joelschellenberg/Google-Cloud-Project/blob/main/img/web21.png)
 
-Nun kann ich mich mit dem zuvor erstellten Benutzer anmelden.
+Now I can log in with the previously created user.
 
 ![Alt text of the image](https://github.com/joelschellenberg/Google-Cloud-Project/blob/main/img/web22.png)
 
 ![Alt text of the image](https://github.com/joelschellenberg/Google-Cloud-Project/blob/main/img/web23.png)
 
-**Schritt 7:** Ich erstelle ein neues Verzeichnis. In diesem Verzeichnis werden die Dateien später hochgeladen.
+**Step 7:** I create a new directory. The files will be uploaded to this directory later.
 
 ![Alt text of the image](https://github.com/joelschellenberg/Google-Cloud-Project/blob/main/img/web24.png)
 
-Danach erstelle ich eine neue Bibliothek.
+I then create a new library.
 
 ![Alt text of the image](https://github.com/joelschellenberg/Google-Cloud-Project/blob/main/img/web25.png)
 
-Anschliessend auf "Add" klicken, um eine neue hinzuzufügen.
+Then click on “Add” to add a new one.
 
 ![Alt text of the image](https://github.com/joelschellenberg/Google-Cloud-Project/blob/main/img/web26.png)
 
-In dem Menü muss man unter Folder den Pfad zum erstellten Ordner eintragen.
-In meinem Fall wäre das "/home/marentonizda/hmovies"
+In the menu, you have to enter the path to the created folder under Folder.
+In my case, this would be “/home/marentonizda/hmovies”
 
 ![Alt text of the image](https://github.com/joelschellenberg/Google-Cloud-Project/blob/main/img/web27.png)
 
-Nun sieht man die neue erstellte Bibliothek.
+You can now see the newly created library.
 
 ![Alt text of the image](https://github.com/joelschellenberg/Google-Cloud-Project/blob/main/img/web28.png)
 
-**Schritt 8:** Als nächstes generiere ich einen SSH-Key und speichere den Schlüssel in dem Ordner "C:\Users\Joels\.ssh\embly.pub"
+**Step 8:** Next, I generate an SSH key and save the key in the folder “C:\Users\Joels\.ssh\embly.pub”
 
 ![Alt text of the image](https://github.com/joelschellenberg/Google-Cloud-Project/blob/main/img/web29.png)
 
 ![Alt text of the image](https://github.com/joelschellenberg/Google-Cloud-Project/blob/main/img/web30.png)
 
-Anschliessend kopiere ich den Schlüssel in die Google Cloud VM Instance.
+I then copy the key to the Google Cloud VM Instance.
 
 ![Alt text of the image](https://github.com/joelschellenberg/Google-Cloud-Project/blob/main/img/web31.png)
 
-**Schritt 9:** Als nächstes öffne ich die Anwendung "FileZilla".
+**Step 9:** Next, I open the “FileZilla” application.
 
 ![Alt text of the image](https://github.com/joelschellenberg/Google-Cloud-Project/blob/main/img/web32.png)
 
-Im Server Manager muss ich die erstellte Google Cloud VM Instance hinzufügen.
-**Wichtige Daten:**
+I have to add the created Google Cloud VM instance in the Server Manager.
+**Important data:**
 ProtokolL: SFTP (SSH File Transfer Protocol)
-Host: 35.195.66.149 (External IP-Adresse von der VM)
-Schlüsseldatei: C:\Users\joels\.ssh\embly
+Host: 35.195.66.149 (External IP address of the VM)
+Key file: C:\Users\joels\.ssh\embly
 
 ![Alt text of the image](https://github.com/joelschellenberg/Google-Cloud-Project/blob/main/img/web33.png)
 
-Nach dem abschliessen sehe ich, dass die Verbindung funktioniert hat.
+After completing, I see that the connection has worked.
 
 ![Alt text of the image](https://github.com/joelschellenberg/Google-Cloud-Project/blob/main/img/web34.png)
 
-Für den Transfer der Medien habe ich 3 img heruntergeladen und diese von meinem lokalen Downloads Ordner in den Ordner vom Media Server geladen.
+To transfer the media, I downloaded 3 img and uploaded them from my local Downloads folder to the Media Server folder.
 
 ![Alt text of the image](https://github.com/joelschellenberg/Google-Cloud-Project/blob/main/img/web36.png)
 
-**Schritt 10:** Nach der erfolgreichen Übertragung konnte ich prüfen, ob die Daten auch wirklich in den MediaServer geladen wurden.
+**Step 10:** After the successful transfer, I was able to check whether the data had actually been loaded into the MediaServer.
 
 ![Alt text of the image](https://github.com/joelschellenberg/Google-Cloud-Project/blob/main/img/web37.png)
 
-Die Medien können erfolgreich auf den MedienServer geladen werden. Der Service ermöglicht es, Medieninhalte effizient zu verwalten und von überall darauf zuzugreifen, was ihn zu einer idealen Lösung für moderne Medienverwaltung und -bereitstellung macht.
+The media can be successfully uploaded to the media server. The service makes it possible to manage media content efficiently and access it from anywhere, making it an ideal solution for modern media management and provision.
 
-**SSH Public Key** (Abgeändert)
+**SSH Public Key**
 
 ```bash
 SSH Public Key: ssh-rsa AAAAB3Nxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
@@ -686,13 +691,13 @@ SSH Public Key: ssh-rsa AAAAB3Nxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 ------------------------
 
-# Minecraft Server auf Google Cloud betreiben.
+# Run Minecraft Server on Google Cloud.
 ![Alt text of the image](https://github.com/joelschellenberg/Google-Cloud-Project/blob/main/img/Netzwerkplan-Minecraft1.png)
 
 
-In diesem Projekt wird ein Minecraft-Server in der Google Cloud gehostet und verwaltet. Der Server wird innerhalb einer virtuellen Maschine bereitgestellt und kann über eine SSH-Verbindung administriert werden. Die gesamte Konfiguration und Bereitstellung des Servers erfolgt codebasiert, was eine einfache Migration ermöglicht.
+In this project, a Minecraft server is hosted and managed in the Google Cloud. The server is provided within a virtual machine and can be administered via an SSH connection. The entire configuration and deployment of the server is code-based, which allows for easy migration.
 
-**Virtuelle Instanz vorbereiten**
+**Prepare virtual instance**
 Name: minecraft-server
 
 ![Alt text of the image](https://github.com/joelschellenberg/Google-Cloud-Project/blob/main/img/CreateVM.png)
@@ -701,22 +706,22 @@ Name: minecraft-server
 
 
 **Disk Formatting and Mounting**
-Neues Verzeichnis erstellen: 
+Create new directory: 
 ```bash
 sudo mkdir -p /home/Minecraft
 ```
 
-Disk formatieren: 
+Format the disk: 
 ```bash
 sudo mkfs.ext4 -F -E lazy_itable_init=0,lazy_journal_init=0,discard /dev/disk/by-id/google-minecraft-disk
 ```
 
-Disk mounten: 
+Mount the disk: 
 ```bash
 sudo mount -o discard,defaults /dev/disk/by-id/google-minecraft-disk /home/Minecraft
 ```
  
-**Server herunterladen und aufsetzen:**
+**Download and set up the server:**
 ```bash
 sudo apt-get update
 ```
@@ -755,76 +760,76 @@ screen -S mcs java -Xmx3G -jar fabric-server-mc.1.20.2-loader.0.14.23-launcher.0
 screen -r mcs
 ```
 
-## Konfiguration der einzelnen Einstellungen
-Im "server.properties" File kann man bestimmte Regeln für den Minecraft-Server festlegen, wie z.B den Schwierigkeitsgrad, die Uhrzeit oder die maximale Spieleranzahl.
+## Configuration of the individual settings
+In the “server.properties” file, you can define certain rules for the Minecraft server, such as the difficulty level, the time or the maximum number of players.
 ```bash
 nano server.properties
 ```
 
-Das File sieht wie folgt aus:
+The file looks like this:
 
 ![Alt text of the image](https://github.com/joelschellenberg/Google-Cloud-Project/blob/main/img/properties2.png)
 
-## Firewall Regel erstellen
-Nachdem der Minecraft Server erfolgreich erstellt wurde muss ich eine Firewall-Regel erstellen. Ohne diese Regel können keine Spieler auf den Minecraft Server connecten. Der Port muss geöffnet werden, damit der Server public ist. Die Regel wird in folgenden Schritten erstellt:
+## Create firewall rule
+After the Minecraft server has been successfully created, I need to create a firewall rule. Without this rule, no players can connect to the Minecraft server. The port must be opened so that the server is public. The rule is created in the following steps:
 
-Ich habe den zuvor erstellten Tag "minecraft-server" eingetragen und die source IP Range auf 0.0.0.0/0. Anschliessend habe ich den Port 25565 gesetzt. Dieser ist später wichtig für die Verbindung zum Minecraft Server.
+I entered the previously created tag “minecraft-server” and set the source IP range to 0.0.0.0/0. Then I set the port 25565. This is important later for the connection to the Minecraft server.
 
 ![Alt text of the image](https://github.com/joelschellenberg/Google-Cloud-Project/blob/main/img/Firewall.png)
 
-Nach der Erstellung der Firewall konnte ich mit dem Testing fortfahren, da alle nötigen Schritte nun durchgeführt wurden.
+After creating the firewall, I was able to continue testing, as all the necessary steps had now been carried out.
 
 ## Testing
-Als erstes habe ich auf der Website https://mcsrvstat.us/ nachgeschaut, ob der Server im Minecraft-Universum erreiechbar ist.
+The first thing I did was check the website https://mcsrvstat.us/ to see if the server is accessible in the Minecraft universe.
 
-**Server-Adresse:** 34.175.175.3:25565
+**Server-Address:** 34.175.175.3:25565
 **Version:** 1.20.2
 
 ![Alt text of the image](https://github.com/joelschellenberg/Google-Cloud-Project/blob/main/img/TestingMC1.png)
 
-Nachdem dies erfolgreich funktionierte habe ich Minecraft gestartet. Dort habe ich mich auf den Server verbunden. Dies war erfolgreich und ich konnte mich frei im Server bewegen. Für die ausführliche nachvollziehung habe ich ein Video aufgenommen.
+After this worked successfully, I started Minecraft. There I connected to the server. This was successful and I was able to move freely around the server. I recorded a video for a more detailed explanation.
 
-**Video Vorschau**
+**Video Preview**
 ![Alt text of the image](https://github.com/joelschellenberg/Google-Cloud-Project/blob/main/img/TestingMC3.mp4)
 
 ## Minecraft Server Monitoring
-Um den Traffic des Minecraft Servers zu überwachen, musste ich einige Schritte vorgehen. Zuerst aktualisierte ich die Paketliste des Paketmanagers, um sicherzustellen, dass die neuesten Versionen der Pakete und deren Abhängigkeiten installieren kann.
+To monitor the Minecraft server traffic, I had to take a few steps. First, I updated the package list of the package manager to ensure that the latest versions of the packages and their dependencies can be installed.
 
 ```bash
 sudo apt-get update
 ```
 
-Anschliessend habe ich das Installationsskript für das Hinzufügen des Google Cloud Operations Suite Agent Repository heruntergeladen.
+I then downloaded the installation script for adding the Google Cloud Operations Suite Agent Repository.
 
 ```bash
 curl -sSO https://dl.google.com/cloudagents/add-google-cloud-ops-agent-repo.sh
 ```
 
-Als nächstes Führte ich das heruntergeladene Installationsskript aus, um das Google Cloud Operations Suite Repository hinzuzufügen und gleichzeitig den Ops Agent zu installieren.
+Next, I ran the downloaded install script to add the Google Cloud Operations Suite repository and install the Ops Agent at the same time.
 
 ```bash
 sudo bash add-google-cloud-ops-agent-repo.sh --also-install
 ```
 
-Ich aktualisierte die Paketlisten erneut.
+I updated the package lists again.
 
 ```bash
 sudo apt-get update
 ```
 
-Anschliessend installiere ich den Google Cloud Ops Agent, der für die Überwachung und das Logging meiner VM zuständig ist.
+I then install the Google Cloud Ops Agent, which is responsible for monitoring and logging my VM.
 
 ```bash
 sudo apt-get install google-cloud-ops-agent
 ```
 
-Danach konnte ich den Google Cloud Ops Agent starten, damit er mit der Überwachung meiner VM beginnen kann.
+I was then able to start the Google Cloud Ops Agent so that it could begin monitoring my VM.
 
 ```bash
 sudo service google-cloud-ops-agent start
 ```
 
-Zum Schluss überprüfte ich den Status des Google Cloud Ops Agent, um sicherzustellen, dass er ordnungsgemäss läuft und keine Probleme vorliegen.
+Finally, I checked the status of the Google Cloud Ops Agent to make sure it was running properly and that there were no problems.
 
 ```bash
 sudo service google-cloud-ops-agent status
@@ -832,40 +837,40 @@ sudo service google-cloud-ops-agent status
 
 ![Alt text of the image](https://github.com/joelschellenberg/Google-Cloud-Project/blob/main/img/Monitoring1.png)
 
-Im Monitoring sieht man die wichtigsten Daten. Im GUI der Google Cloud kann man folgende Informationen vom Diagramm auslesen:
+The most important data can be seen in the monitoring. The following information can be read from the diagram in the Google Cloud GUI:
 
 **1. bytes_used**
-Überwacht den Speicherverbrauch meines Servers. Ein hoher Speicherverbrauch könnte auf viele geladene Welten, viele aktive Spieler oder viele installierte Plugins hinweisen. Bei meinem Fall wird nicht viel Speicher verbraucht, da auch keine Spieler auf dem Server aktiv sind.
+Monitors the memory consumption of my server. High memory consumption could indicate many loaded worlds, many active players or many installed plugins. In my case, not much memory is used as there are no active players on the server.
 
 **2. load_1m**
-Diese Statistik gibt Informationen darüber, wie ausgelastet der Server ist. Eine solche Last wie 0.188 bedeutet z.B, dass der Server bei weitem nicht überlastet ist.
+This statistic provides information about how busy the server is. A load such as 0.188 means, for example, that the server is far from being overloaded.
 
 **3. tcp_connections**
-Überwacht die Anzahl der Verbindungen, die zu meinem Server bestehen. Diese könnte die Anzahl der Spieler zeigen, die momentan auf dem Server spielen oder andere Verbindungen, wie z.B von Verwaltungstools.
+Monitors the number of connections that exist to my server. This could show the number of players currently playing on the server or other connections, e.g. from administration tools.
 
 ![Alt text of the image](https://github.com/joelschellenberg/Google-Cloud-Project/blob/main/img/Monitoring2.png.png)
 
-# Containerisierung des Minecraft Server
-Die Containerisierung des bestehenden Minecraft Servers bringt mehrere Vorteile mit sich, wie z.B:
-- Portabilität
-- Isolierung
-- Ressourceneffizienz
-- Skalierbarkeit
-- Schnelle Bereitstellung
+# Containerization of the Minecraft server
+The containerization of the existing Minecraft server brings several advantages, such as
+- Portability
+- isolation
+- Resource efficiency
+- Scalability
+- Fast deployment
 
-Die Umgebung sieht nach der Containerisierung wie folgt aus:
+The environment looks as follows after containerization:
 
 ![Alt text of the image](https://github.com/joelschellenberg/Google-Cloud-Project/blob/main/img/Netzwerkplan-Minecraft-Docker.png)
 
-**Erste Schritte zur Vorbereitung von Docker:**
+**First steps to prepare Docker:**
 sudo apt update
 sudo apt install docker.io
 sudo systemctl start docker
 sudo systemctl enable docker
 
-Dockerfile erstellen im Verzeichnis /home/Minecraft mit folgendem Inhalt:
+Create a Dockerfile in the /home/Minecraft directory with the following content:
 ```bash
-# Basisimage verwenden
+# Use base image
 FROM openjdk:16-slim
 
 # Arbeitsverzeichnis im Container setzen
@@ -879,95 +884,95 @@ EXPOSE 25565
 CMD ["java", "-Xmx2G", "-Xms1G", "-jar", "minecraft_server.jar", "nogui"]
 ```
 
-Dockerfile editieren.
+Edit Dockerfile.
 ```bash
 nano dockerfile
 ```
 
-Nun starte ich Docker.
+Now I start Docker.
 ```bash
 docker build -t minecraft-server .
 ```
 
-Dockervolume erstellen.
+Create docker volume.
 
 ```bash
 sudo docker volume create minecraft-data
 ```
 
-Funktioniert nicht!
+Does not work!
 ```bash
 docker run -d -p 25565:25565 --name minecraft-server -v minecraft-data:/minecraft minecraft-server
 ```
 
-**Projekt konnte nicht fertiggestellt werden**
+**Project could not be completed**
 
 # Allgemein
 
-## Änderungen im GitLab in die GKE Pushen
-1. Änderungen im GitLab IDE Commiten.
-2. Command "git pull origin master" eingeben
+## Pushing changes from GitLab to the GKE
+1. Commit changes from gitlab
+2. Execute "git pull origin master"
 3. npm start
 4. http://localhost:3000
 
 ![Alt text of the image](https://github.com/joelschellenberg/Google-Cloud-Project/blob/main/img/React-Anwendung-Json.png)
 
-## Übersicht nützliche Befehle mit Kubernetes
-Um die Konfiguration des Klusters anzuzeigen:
+## Overview of useful commands with Kubernetes
+To display the configuration of the cluster:
 ```Bash
 cat .kube/config
 ```
- oder
+or
 ```Bash
 kubectl config view
 ```
 
-Cluster Informationen anzeigen lassen:
+Display cluster information:
 ```Bash
 kubectl cluster-info
 ```
 
-CPU, Memory Auslastungen:
+CPU, memory utilization:
 ```Bash
 kubectl top nodes
 ```
 
-Einen Pod erstellen:
+Create a pod:
 ```Bash
 kubectl run nginx-1 --image nginx:latest
 ```
 
-Laufende Pods anzeigen lassen:
+Display running pods:
 ```Bash
 kubectl get pods
 ```
 
-Informationen vom Pod anzeigen lassen:
+Display pod informations:
 ```Bash
 kubectl describe pod nginx-1
 ```
 
-Cluster löschen:
+Delete clusters:
 ```Bash
 gcloud container clusters delete "cluster_name"
 ```
 
 ---
 
-# Schlusswort
-In dieser Arbeit habe ich wertvolle Erfahrungen in der Google Cloud gesammelt. Die einzelnen Projekte ermöglichten mir einen tiefen Einblick in verschiedene Aspekte der Google Cloud Plattform, sowie in moderne Entwicklungsverfahren
+# Conclusion
+In this thesis, I have gained valuable experience in the Google Cloud. The individual projects gave me a deep insight into various aspects of the Google Cloud platform, as well as into modern development processes.
 
-Durch das Aufsetzen und Verwalten der Google Kubernetes Engine habe ich ein fundiertes Verständnis für die Einrichtung und Verwaltung von Kubernetes-Clustern entwickelt. Ich habe gelernt, wie man Anwendungen containerisiert, in einem Cloud-Umfeld bereitstellt und die grundlegenden Werkzeuge zur Überwachung und Fehlerbehebung einsetzt.
+By setting up and managing the Google Kubernetes Engine, I have developed a solid understanding of how to set up and manage Kubernetes clusters. I learned how to containerize applications, deploy them in a cloud environment and use the basic tools for monitoring and troubleshooting.
 
-Die Verwaltung des React-App-Services innerhalb des Kubernetes Clusters lehrte mich wichtige Praktiken für die Überwachung und Wartung von Cloud-Anwendungen. Ich erlernte, wie man den Status von Pods überprüft und Probleme im Betrieb einer Anwendung effizient identifiziert und behebt.
+Managing the React app service within the Kubernetes cluster taught me important practices for monitoring and maintaining cloud applications. I learned how to check the status of pods and efficiently identify and fix problems in the operation of an application.
 
-Die Erstellung und Verwaltung einer MySQL-Datenbank innerhalb des Kubernetes Clusters vermittelte mir Kenntnisse in der Konfiguration und Sicherstellung von Datenpersistenz sowie in der Verwaltung relationaler Datenbanken in einer Cloud-Umgebung.
+Creating and managing a MySQL database within the Kubernetes cluster gave me knowledge of configuring and ensuring data persistence as well as managing relational databases in a cloud environment.
 
-Die Konfiguration eines MediaServers zur Verwaltung von Medieninhalten zeigte mir, wie man Cloud-Dienste für spezielle Anwendungsfälle konfiguriert und verwaltet, und vermittelte mir Fähigkeiten in der Installation und Einrichtung von Server-Software sowie in der Verwaltung von Benutzerkonten und Medienbibliotheken.
+Configuring a MediaServer to manage media content showed me how to configure and manage cloud services for specific use cases and gave me skills in installing and setting up server software and managing user accounts and media libraries.
 
-Schliesslich bot das Einrichten und Containersieren eines Minecraft Servers auf Google Cloud eine praktische Herausforderung, die mir ermöglichte, meine Fähigkeiten in der Serverkonfiguration und Containerisierung weiterzuentwickeln. Obwohl die Migration des Servers in die Google Kubernetes Engine letztlich nicht erfolgreich war, half mir dieser Prozess, ein tieferes Verständnis für die Komplexität von API-Berechtigungen und Fehlersuche in Cloud-Umgebungen zu erlangen.
+Finally, setting up and containerizing a Minecraft server on Google Cloud provided a hands-on challenge that allowed me to further develop my skills in server configuration and containerization. Although the migration of the server to the Google Kubernetes engine was ultimately unsuccessful, this process helped me gain a deeper understanding of the complexities of API permissions and debugging in cloud environments.
 
-Insgesamt habe ich durch diese Arbeit nicht nur technische Fähigkeiten und Kenntnisse in der Cloud-Entwicklung erlangt, sondern auch ein besseres Verständnis für die Herausforderungen und Lösungen in der Verwaltung moderner Cloud-Infrastrukturen gewonnen. 
+Overall, this work has not only given me technical skills and knowledge in cloud development, but also a better understanding of the challenges and solutions in managing modern cloud infrastructures.
 
 ---
 
