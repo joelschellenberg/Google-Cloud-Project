@@ -234,4 +234,4 @@ Nach der Implementierung der Lösung konnte der Minecraft-Server erfolgreich ges
 Heute wollte ich meinen Minecraft Server in einen Docker Container Migrieren. Alles funktionierte, bis ich mich authentifizieren musste. Es gab Probleme mit der API Rolle. Obwohl ich diese hinzugefügt habe, hatte ich keine Berechtigungen. Leider musste ich nach mehreren versuchen aufgeben. Ich habe mir vorgenommen, dass ich mich nochmals am Wochenende damit befassen werde. Diese Problemlösung hat mich sehr lange beschäftigt.
 
 #### Dokumentation verbessern
-Ich habe noch einen Projektbeschrieb erarbeitet, da ich diesen bis jetzt vergessen habe. Weitere Commandlines habe ich noch beschrieben und erkennbar gemacht.
+Ich habe noch einen Projektbeschrieb erarbeitet, da ich diesen bis jetzt vergessen habe. Weitere Commandlines habe ich noch beschrieben und erkennbar gemacht. Das Projekt ist nun abgeschlossen!
